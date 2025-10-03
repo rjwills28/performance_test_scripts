@@ -44,6 +44,10 @@ There is also a script to generate the EPICS DB file and a script to monitor the
     ```
 
 ### Phoebus Tests
+- Note: in your Phoebus settings file, uncomment or add this line to ensure Phoebus does not limit our update rates:
+  ```
+  org.csstudio.display.builder.runtime/update_throttle=1
+  ```
 - Create BOB files. The following command will create 10 BOB screens each with 20 TextUpdate widgets connecting to the PVs running in the IOC above. 
   ```
   ./create_bob.sh -n 20 -s 10
@@ -51,18 +55,19 @@ There is also a script to generate the EPICS DB file and a script to monitor the
   These are saved in the `/bob/` directory
 - Start Phoebus with these screens (adjust for your `<user>`):
   ```
-  phoebus -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage0.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage1.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage2.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage3.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage4.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage5.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage6.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage7.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage8.bob?target=window
-  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage9.bob?target=window
+  phoebus -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage0.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage1.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage2.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage3.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage4.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage5.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage6.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage7.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage8.bob?target=window \
+  -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage9.bob?target=window \
   ```
  - Monitor the CPU of this process. First find the process ID (`<PID>`) and then from another terminal run:
     ```
     ./cpu_monitor.sh -p <PID>
     ```
+    - Try with the screens at start up size and then when all have been maximised to see the CPU difference.
