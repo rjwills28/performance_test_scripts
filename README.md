@@ -66,7 +66,7 @@ There is also a script to generate the EPICS DB file and a script to monitor the
   -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage8.bob?target=window \
   -resource file:/home/<user>/performance_test_scripts/bob/performanceTestPage9.bob?target=window \
   ```
- - Monitor the CPU of this process. First find the process ID (`<PID>`) and then from another terminal run:
+ - Monitor the CPU of this process. First find the process ID (`<PID>`) using System Monitor or another tool and then from another terminal run:
     ```
     ./cpu_monitor.sh -p <PID>
     ```
